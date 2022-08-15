@@ -1,31 +1,32 @@
 const {
   cdk: { ConstructLibrary },
-} = require('projen');
+} = require("projen");
 
 const project = new ConstructLibrary({
-  author: 'nlopezm',
-  cdkVersion: '2.37.1',
-  defaultReleaseBranch: 'main',
-  jsiiFqn: 'projen.AwsCdkConstructLibrary',
-  name: 'aws-cdk-image-resize',
-  repositoryUrl: 'https://github.com/nlopezm/aws-cdk-image-resize.git',
+  author: "nlopezm",
+  cdkVersion: "2.37.1",
+  defaultReleaseBranch: "main",
+  jsiiFqn: "projen.AwsCdkConstructLibrary",
+  name: "aws-cdk-image-resize",
+  repositoryUrl: "https://github.com/nlopezm/aws-cdk-image-resize.git",
   cdkVersionPinning: true,
   cdkDependencies: [],
   eslint: true,
   keywords: [
-    'aws-cdk',
-    'aws',
-    'cdk',
-    'cloudfront',
-    'formatter',
-    'images',
-    'lambda',
-    'lambda@edge',
-    'resize',
+    "aws-cdk",
+    "aws",
+    "cdk",
+    "cloudfront",
+    "formatter",
+    "images",
+    "lambda",
+    "lambda@edge",
+    "resize",
   ],
-  gitignore: ['cdk.out'],
-  deps: ['esbuild@^0.8.46', 'aws-cdk-lib', 'constructs'],
-  bundledDeps: ['esbuild@^0.8.46'],
+  gitignore: ["cdk.out"],
+  deps: ["esbuild@^0.8.46", "aws-cdk-lib", "constructs"],
+  bundledDeps: ["esbuild@^0.8.46"],
+  prettier: true,
 
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the aws-cdk-lib/assert library? */
@@ -59,7 +60,7 @@ const project = new ConstructLibrary({
   // bundledDeps: undefined,                                                   /* List of dependencies to bundle into this module. */
   // deps: [],                                                                 /* Runtime dependencies of this module. */
   description:
-    'AWS CDK construct to easily setup the required arquitecture to serve performant responsive images.' /* The description is just a string that helps people understand the purpose of the package. */,
+    "AWS CDK construct to easily setup the required arquitecture to serve performant responsive images." /* The description is just a string that helps people understand the purpose of the package. */,
   // devDeps: [],                                                              /* Build dependencies for this module. */
   // entrypoint: 'lib/index.js',                                               /* Module entrypoint (`main` in `package.json`). */
   // homepage: undefined,                                                      /* Package's Homepage / Website. */
