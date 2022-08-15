@@ -1,31 +1,35 @@
-const { AwsCdkConstructLibrary } = require('projen');
+const {
+  cdk: { ConstructLibrary },
+} = require('projen');
 
-const project = new AwsCdkConstructLibrary({
+const project = new ConstructLibrary({
   author: 'nlopezm',
-  cdkVersion: '1.132.0',
+  cdkVersion: '2.37.1',
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: 'aws-cdk-image-resize',
   repositoryUrl: 'https://github.com/nlopezm/aws-cdk-image-resize.git',
   cdkVersionPinning: true,
-  cdkDependencies: [
-    '@aws-cdk/aws-cloudfront-origins',
-    '@aws-cdk/aws-certificatemanager',
-    '@aws-cdk/aws-cloudfront',
-    '@aws-cdk/aws-lambda',
-    '@aws-cdk/aws-s3',
-    '@aws-cdk/core',
-    '@aws-cdk/aws-lambda-nodejs',
-  ],
+  cdkDependencies: [],
   eslint: true,
-  keywords: ['aws-cdk', 'aws', 'cdk', 'cloudfront', 'formatter', 'images', 'lambda', 'lambda@edge', 'resize'],
+  keywords: [
+    'aws-cdk',
+    'aws',
+    'cdk',
+    'cloudfront',
+    'formatter',
+    'images',
+    'lambda',
+    'lambda@edge',
+    'resize',
+  ],
   gitignore: ['cdk.out'],
-  deps: ['esbuild@^0.8.46'],
+  deps: ['esbuild@^0.8.46', 'aws-cdk-lib', 'constructs'],
   bundledDeps: ['esbuild@^0.8.46'],
 
   /* AwsCdkConstructLibraryOptions */
-  // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */
-  // cdkDependencies: undefined,                                               /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
+  // cdkAssert: true,                                                          /* Install the aws-cdk-lib/assert library? */
+  // cdkDependencies: undefined,                                               /* Which AWS CDK modules (those that start with "aws-cdk-lib/") does this library require when consumed? */
   // cdkTestDependencies: undefined,                                           /* AWS CDK modules required for testing. */
   // cdkVersionPinning: false,                                                 /* Use pinned version instead of caret version for CDK. */
 

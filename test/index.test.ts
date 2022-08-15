@@ -1,6 +1,6 @@
-import * as cdk from '@aws-cdk/core';
+import 'aws-cdk-lib/assert/jest';
+import * as cdk from 'aws-cdk-lib/core';
 import { ImageResize } from '../src';
-import '@aws-cdk/assert/jest';
 
 it('Image resize', () => {
   const app = new cdk.App();

@@ -1,29 +1,23 @@
 {
   "dependencies": [
     {
-      "name": "@aws-cdk/assert",
-      "version": "1.132.0",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
+      "version": "^27",
       "type": "build"
     },
     {
       "name": "@types/node",
-      "version": "^14.17.0",
+      "version": "^14",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
+      "version": "^5",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "type": "build"
-    },
-    {
-      "name": "eslint",
+      "version": "^5",
       "type": "build"
     },
     {
@@ -39,12 +33,18 @@
       "type": "build"
     },
     {
-      "name": "jest",
+      "name": "eslint",
+      "version": "^8",
       "type": "build"
     },
     {
       "name": "jest-junit",
-      "version": "^12",
+      "version": "^13",
+      "type": "build"
+    },
+    {
+      "name": "jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "name": "npm-check-updates",
-      "version": "^11",
+      "version": "^15",
       "type": "build"
     },
     {
@@ -83,6 +83,7 @@
     },
     {
       "name": "ts-jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -95,78 +96,11 @@
       "type": "bundled"
     },
     {
-      "name": "@aws-cdk/aws-certificatemanager",
-      "version": "1.132.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-cloudfront-origins",
-      "version": "1.132.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-cloudfront",
-      "version": "1.132.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "1.132.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda",
-      "version": "1.132.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-s3",
-      "version": "1.132.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/core",
-      "version": "1.132.0",
-      "type": "peer"
+      "name": "aws-cdk-lib",
+      "type": "runtime"
     },
     {
       "name": "constructs",
-      "version": "^3.2.27",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-certificatemanager",
-      "version": "1.132.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-cloudfront-origins",
-      "version": "1.132.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-cloudfront",
-      "version": "1.132.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "1.132.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda",
-      "version": "1.132.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-s3",
-      "version": "1.132.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/core",
-      "version": "1.132.0",
       "type": "runtime"
     },
     {
