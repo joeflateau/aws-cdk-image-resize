@@ -12,29 +12,35 @@ import { DistributionProps, FunctionProps } from "./types";
 export * from "./types";
 
 export interface IImageResizeProps {
+  createDistribution?: boolean;
   cloudfrontDistributionProps?: DistributionProps;
   originResponseLambdaProps?: NodejsFunctionProps;
-  s3BucketProps?: s3.BucketProps;
+  s3BucketOrProps?: s3.Bucket | s3.BucketProps;
   viewerRequestLambdaProps?: FunctionProps;
 }
 
 export class ImageResize extends Construct {
-  distribution: cloudfront.Distribution;
+  distribution: cloudfront.Distribution | null;
   imageOriginResponseLambda: NodejsFunction;
   imagesBucket: s3.Bucket;
   imageViewerRequestLambda: lambda.Function;
+  behaviorOptions: cloudfront.BehaviorOptions;
 
   constructor(scope: Construct, id: string, props?: IImageResizeProps) {
     super(scope, id);
 
     const {
-      s3BucketProps,
+      s3BucketOrProps,
       originResponseLambdaProps,
       viewerRequestLambdaProps,
       cloudfrontDistributionProps,
+      createDistribution,
     } = props || {};
 
-    this.imagesBucket = new s3.Bucket(this, "Bucket", s3BucketProps);
+    this.imagesBucket =
+      s3BucketOrProps instanceof s3.Bucket
+        ? s3BucketOrProps
+        : new s3.Bucket(this, "Bucket", s3BucketOrProps);
 
     this.imageOriginResponseLambda = new NodejsFunction(
       this,
@@ -89,28 +95,32 @@ export class ImageResize extends Construct {
     );
     this.imagesBucket.grantRead(originAccessIdentity);
 
-    // Cloudfront distribution for the S3 bucket.
-    this.distribution = new cloudfront.Distribution(this, "Distribution", {
-      ...cloudfrontDistributionProps,
-      defaultBehavior: {
-        origin: new origins.S3Origin(this.imagesBucket, {
-          originAccessIdentity,
-        }),
-        cachePolicy,
-        edgeLambdas: [
-          {
-            eventType: cloudfront.LambdaEdgeEventType.ORIGIN_RESPONSE,
-            functionVersion: this.imageOriginResponseLambda.currentVersion,
-          },
-          {
-            eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
-            functionVersion: this.imageViewerRequestLambda.currentVersion,
-          },
-        ],
-        viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        compress: true,
-        ...cloudfrontDistributionProps?.defaultBehavior,
-      },
+    const behaviorOptions = (this.behaviorOptions = {
+      origin: new origins.S3Origin(this.imagesBucket, {
+        originAccessIdentity,
+      }),
+      cachePolicy,
+      edgeLambdas: [
+        {
+          eventType: cloudfront.LambdaEdgeEventType.ORIGIN_RESPONSE,
+          functionVersion: this.imageOriginResponseLambda.currentVersion,
+        },
+        {
+          eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
+          functionVersion: this.imageViewerRequestLambda.currentVersion,
+        },
+      ],
+      viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+      compress: true,
+      ...cloudfrontDistributionProps?.defaultBehavior,
     });
+
+    // Cloudfront distribution for the S3 bucket.
+    this.distribution = createDistribution
+      ? new cloudfront.Distribution(this, "Distribution", {
+          ...cloudfrontDistributionProps,
+          defaultBehavior: behaviorOptions,
+        })
+      : null;
   }
 }
