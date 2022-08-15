@@ -62,8 +62,8 @@
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.37.1",
-    "constructs": "^10.1.76"
+    "aws-cdk-lib": "2.37.1",
+    "constructs": "10.1.76"
   },
   "dependencies": {
     "esbuild": "^0.8.46"

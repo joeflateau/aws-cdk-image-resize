@@ -25,7 +25,7 @@ const project = new ConstructLibrary({
   ],
   gitignore: ["cdk.out"],
   deps: ["esbuild@^0.8.46"],
-  peerDeps: ["aws-cdk-lib", "constructs"],
+  peerDeps: ["aws-cdk-lib@2.37.1", "constructs@10.1.76"],
   bundledDeps: ["esbuild@^0.8.46"],
   prettier: true,
 
