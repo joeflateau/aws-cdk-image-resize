@@ -34,7 +34,7 @@ export class ImageResize extends Construct {
       originResponseLambdaProps,
       viewerRequestLambdaProps,
       cloudfrontDistributionProps,
-      createDistribution,
+      createDistribution = true,
     } = props || {};
 
     this.imagesBucket =
