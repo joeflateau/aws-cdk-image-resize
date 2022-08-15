@@ -21,6 +21,14 @@
       "type": "build"
     },
     {
+      "name": "aws-cdk-lib",
+      "type": "build"
+    },
+    {
+      "name": "constructs",
+      "type": "build"
+    },
+    {
       "name": "eslint-config-prettier",
       "type": "build"
     },
@@ -109,11 +117,11 @@
     },
     {
       "name": "aws-cdk-lib",
-      "type": "runtime"
+      "type": "peer"
     },
     {
       "name": "constructs",
-      "type": "runtime"
+      "type": "peer"
     },
     {
       "name": "esbuild",
