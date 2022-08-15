@@ -1,18 +1,18 @@
-import { App, RemovalPolicy, Stack } from 'aws-cdk-lib/core';
-import { ImageResize } from './index';
+import { App, RemovalPolicy, Stack } from "aws-cdk-lib/core";
+import { ImageResize } from "./index";
 
 const app = new App();
-const stack = new Stack(app, 'ImageResizeStack');
+const stack = new Stack(app, "ImageResizeStack");
 
-new ImageResize(stack, 'ImageResizeLib', {
-  s3BucketProps: {
+new ImageResize(stack, "ImageResizeLib", {
+  s3BucketOrProps: {
     autoDeleteObjects: true,
-    bucketName: 'image-resize-lib-test',
+    bucketName: "image-resize-lib-test",
     removalPolicy: RemovalPolicy.DESTROY,
   },
   cloudfrontDistributionProps: {
     errorResponses: [
-      { httpStatus: 404, responsePagePath: '/path/to/default/object' },
+      { httpStatus: 404, responsePagePath: "/path/to/default/object" },
     ],
   },
 });

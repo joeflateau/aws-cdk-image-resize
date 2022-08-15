@@ -20,7 +20,7 @@ export interface IImageResizeProps {
 }
 
 export class ImageResize extends Construct {
-  distribution: cloudfront.Distribution | null;
+  distribution?: cloudfront.Distribution;
   imageOriginResponseLambda: NodejsFunction;
   imagesBucket: s3.Bucket;
   imageViewerRequestLambda: lambda.Function;
@@ -121,6 +121,6 @@ export class ImageResize extends Construct {
           ...cloudfrontDistributionProps,
           defaultBehavior: behaviorOptions,
         })
-      : null;
+      : undefined;
   }
 }
